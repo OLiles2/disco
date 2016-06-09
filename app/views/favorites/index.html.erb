@@ -1,0 +1,18 @@
+<div class="page-header">
+  <h1 class="text-center">
+    This Week's Playlist
+  </h1>
+</div>
+
+<% @favorites.each do |favorite| %>
+<h3 class="text-center"><%= favorite.song.artist %></h3>
+<h4 class="text-center"><%= favorite.song.title %></h4>
+<img class="center-block" width="560" src="<%= favorite.song.artist_img %>"/>
+<a class="center-block"><%= favorite.song.song_url.html_safe %></a>
+
+<div class="row text-center">
+  <div class="col-sm-1 col-md-offset-5 col-md-2">
+    <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" id="<%= favorite.song.id %>">nevermind</a>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @song.errors.any? %>
+  <% @song.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Song #<%= @song.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_song/<%= @song.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for song_url -->
+      <div class="form-group">
+        <label for="song_url" class="control-label">
+          Song url
+        </label>
+
+        <input type="text" id="song_url" name="song_url" placeholder="Song url" class="form-control" value="<%= @song.song_url %>">
+      </div>
+
+      <!-- Label and input for artist_img -->
+      <div class="form-group">
+        <label for="artist_img" class="control-label">
+          Artist img
+        </label>
+
+        <input type="text" id="artist_img" name="artist_img" placeholder="Artist img" class="form-control" value="<%= @song.artist_img %>">
+      </div>
+
+      <!-- Label and input for title -->
+      <div class="form-group">
+        <label for="title" class="control-label">
+          Title
+        </label>
+
+        <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @song.title %>">
+      </div>
+
+      <!-- Label and input for artist -->
+      <div class="form-group">
+        <label for="artist" class="control-label">
+          Artist
+        </label>
+
+        <input type="text" id="artist" name="artist" placeholder="Artist" class="form-control" value="<%= @song.artist %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Song
+      </button>
+      or
+      <a href="/songs/<%= @song.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
