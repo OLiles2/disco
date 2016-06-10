@@ -47,6 +47,6 @@ class FavoritesController < ApplicationController
 
     @favorite.destroy
 
-    redirect_to "/songs", :notice => "Removed from playlist"
+    redirect_to :back, :notice => "Removed from playlist"
   end
 end
